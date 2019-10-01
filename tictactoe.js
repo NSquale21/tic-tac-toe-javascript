@@ -39,36 +39,44 @@ function togglePlayer() {
 	}
 }
 
+function checkCells(a, b, c, currentPlayer) {
+	if(cells[a].textContent === currentPlayer && cells[b].textContent === currentPlayer && cells[c].textContent === currentPlayer) {
+			return true;
+	} else {
+			return false;
+	}
+}
+
 function checkForWin() {
-	if(cells[0].textContent === currentPlayer && cells[1].textContent === currentPlayer && cells[2].textContent === currentPlayer) {
+	if(checkCells(0, 1, 2, currentPlayer)) {
 		winner.textContent = `${currentPlayer} Wins!`;
 		isGameOver = true;
-	} else if(cells[3].textContent === currentPlayer && cells[4].textContent === currentPlayer && cells[5].textContent === currentPlayer) {
+	} else if(checkCells(3, 4, 5, currentPlayer)) {
 		winner.textContent = `${currentPlayer} Wins!`;
 		isGameOver = true;
-	} else if(cells[6].textContent === currentPlayer && cells[7].textContent === currentPlayer && cells[8].textContent === currentPlayer) {
+	} else if(checkCells(6, 7, 8, currentPlayer)) {
 		winner.textContent = `${currentPlayer} Wins!`;
 		isGameOver = true;
-	} else if(cells[0].textContent === currentPlayer && cells[3].textContent === currentPlayer && cells[6].textContent === currentPlayer) {
+	} else if(checkCells(0, 3, 6, currentPlayer)) {
 		winner.textContent = `${currentPlayer} Wins!`;
 		isGameOver = true;
-	} else if(cells[1].textContent === currentPlayer && cells[4].textContent === currentPlayer && cells[7].textContent === currentPlayer) {
+	} else if(checkCells(1, 4, 7, currentPlayer)) {
 		winner.textContent = `${currentPlayer} Wins!`;
 		isGameOver = true;
-	} else if(cells[2].textContent === currentPlayer && cells[5].textContent === currentPlayer && cells[8].textContent === currentPlayer) {
+	} else if(checkCells(2, 5, 8, currentPlayer)) {
 		winner.textContent = `${currentPlayer} Wins!`;
 		isGameOver = true;
-	} else if(cells[0].textContent === currentPlayer && cells[4].textContent === currentPlayer && cells[8].textContent === currentPlayer) {
+	} else if(checkCells(0, 4, 8, currentPlayer)) {
 		winner.textContent = `${currentPlayer} Wins!`;
 		isGameOver = true;
-	} else if(cells[2].textContent === currentPlayer && cells[4].textContent === currentPlayer && cells[6].textContent === currentPlayer) {
+	} else if(checkCells(2, 4, 6, currentPlayer)) {
 		winner.textContent = `${currentPlayer} Wins!`;
 		isGameOver = true;
 	} else if(counter === 9) {
 		winner.textContent = 'Draw!';
 		isGameOver = true;
 	}
-}
+} 
 
 function resetGame() {
 	for (let i = 0; i < cells.length; i++) {
