@@ -6,10 +6,12 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Tic Tac Toe</title>
 	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div id="board">
 		<h1>Tic Tac Toe</h1>
+		<h4 id="winner"></h4>
 		<div class="row">
 			<div class="top left"></div>
 			<div class="top center"></div>
@@ -26,6 +28,9 @@
 			<div class="bottom right"></div>
 		</div>
 	</div>
+	<section class="row flex-center">
+		<button class="reset">Reset</button>
+	</section>
 	<script src="tictactoe.js"></script>
 </body>
 </html>
