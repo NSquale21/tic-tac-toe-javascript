@@ -1,5 +1,5 @@
 let cells = document.querySelectorAll('.row > div');
-let currentPlayer = '🔥'; 
+let currentPlayer = String.fromCodePoint(0x1F525);
 let winner = document.querySelector('#winner');
 let counter = 0;
 let isGameOver = false;
@@ -16,13 +16,12 @@ for (let i = 0; i < cells.length; i++) {
 function cellClicked(e) {
 	let cell = e.target;
 	if(isGameOver === true) {
-		resetGame();
 		return;
 	}
+	// Prevents player from drawing if cell if already occupied
 	if(cell.textContent !== '') {
 		return;
 	}
-
 	// draw current player value
 	cell.textContent = currentPlayer;
 	counter++;
@@ -30,15 +29,16 @@ function cellClicked(e) {
 	togglePlayer();
 }
 
-// switches between players
+// toggles between player 1 & player 2
 function togglePlayer() {
-	if(currentPlayer === '🔥') {
-		currentPlayer = '🌊';
+	if(currentPlayer === String.fromCodePoint(0x1F525)) {
+		currentPlayer = String.fromCodePoint(0x1F30A);
 	} else {
-		currentPlayer = '🔥';
+		currentPlayer = String.fromCodePoint(0x1F525);
 	}
 }
 
+// checks for winning combinations by index and currrent player
 function checkCells(a, b, c, currentPlayer) {
 	if(cells[a].textContent === currentPlayer && cells[b].textContent === currentPlayer && cells[c].textContent === currentPlayer) {
 			return true;
@@ -78,20 +78,13 @@ function checkForWin() {
 	}
 } 
 
+// resets game and clears board after a win or draw
 function resetGame() {
 	for (let i = 0; i < cells.length; i++) {
 		cells[i].textContent = '';
 	}
 	isGameOver = false;
 	counter = 0;
-	currentPlayer = '🔥';
+	currentPlayer = String.fromCodePoint(0x1F525);
 	winner.textContent = '';
 }
-
-
-
-
-
-
-
-
